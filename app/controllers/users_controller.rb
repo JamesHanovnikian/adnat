@@ -12,4 +12,11 @@ class UsersController < ApplicationController
       render json: { errors: user.errors.full_messages }, status: :bad_request
     end
   end
+
+  def update
+    user = User.find_by(id: params[:id])
+    user.password = params[:password]
+    user.password_confirmation = params[:password_confirmation]
+    render json: user.as_json
+  end
 end
