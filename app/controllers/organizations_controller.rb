@@ -4,6 +4,11 @@ class OrganizationsController < ApplicationController
     render json: orgs.as_json
   end
 
+  def show
+    organization = Organization.find_by(id: params[:id])
+    render json: organization.as_json
+  end
+
   def create
     org = Organization.new(
       name: params[:name],

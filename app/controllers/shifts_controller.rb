@@ -6,7 +6,7 @@ class ShiftsController < ApplicationController
     render json: shifts.as_json
   end
 
-  def create
+  def create 
     shift = Shift.new(
       user_id = params[:user_id],
       start = params[:start],
