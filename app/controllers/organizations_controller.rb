@@ -25,4 +25,10 @@ class OrganizationsController < ApplicationController
     org.save
     render json: org.as_json
   end
+
+  def destroy
+    org = Organization.find_by(id: params[:id])
+    org.destroy
+    render json: { message: "Organization succesfully destroyed. " }
+  end
 end

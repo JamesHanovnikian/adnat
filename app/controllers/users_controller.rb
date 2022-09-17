@@ -19,4 +19,15 @@ class UsersController < ApplicationController
     user.password_confirmation = params[:password_confirmation]
     render json: user.as_json
   end
+
+  def join_organization
+    user = User.find_by(id: params[:user_id])
+    organization_id = params[:organization_id]
+    user.organization_id = organization_id
+    user.save
+  end
+
+  # def leave_organization
+  #   user.organization_id = nil
+  # end
 end
