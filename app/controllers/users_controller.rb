@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       email: params[:email],
       password: params[:password],
       password_confirmation: params[:password_confirmation],
+      organization_id: nil,
     )
     if user.save
       render json: { message: "User created successfully" }, status: :created
@@ -21,13 +22,15 @@ class UsersController < ApplicationController
   end
 
   def join_organization
-    user = User.find_by(id: params[:user_id])
-    organization_id = params[:organization_id]
-    user.organization_id = organization_id
-    user.save
+    new_organization_id = params[:organization_id]
+    the_current_user = current_user
+    the_current_user.organization_id = new_organization_id
+    the_current_user.save
   end
 
-  # def leave_organization
-  #   user.organization_id = nil
-  # end
+  def leave_organization
+    user = User.find_by(id: params[:user_id])
+    user.organization_id = nil
+    user.save
+  end
 end

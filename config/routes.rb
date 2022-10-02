@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update"
 
   post "/join_organization/" => "users#join_organization"
+  post "/leave_organization/" => "users#leave_organization"
 
   # Log in
 
