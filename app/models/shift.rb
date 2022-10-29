@@ -1,6 +1,7 @@
 class Shift < ApplicationRecord
   belongs_to :user
   delegate :organization, to: :user
+
   SECONDS_IN_HOUR = 3600
 
   def shift_length

@@ -1,14 +1,8 @@
 class ShiftsController < ApplicationController
   def index
-    if current_user
-      the_users_id = current_user.id
-      shifts = Shift.where(user_id: the_users_id)
-      # Each loop to go through all shifts
-      # On each iteration:
-      render json: shifts.as_json
-    else
-      render json: { message: "Your are not logged in." }
-    end
+    logged_in = current_user
+    shifts = Shift.where(user_id: 1)
+    render json: shifts.as_json
   end
 
   def create
@@ -20,5 +14,13 @@ class ShiftsController < ApplicationController
     )
     shift.save
     render json: shift.as_json
+  end
+
+  def get_username
+    puts "********************"
+    puts current_user
+    puts "********************"
+    username = User.find_by(id: current_user.id)
+    render json: username.as_json
   end
 end

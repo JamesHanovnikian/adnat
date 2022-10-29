@@ -26,4 +26,5 @@ Rails.application.routes.draw do
 
   get "/shifts" => "shifts#index"
   post "/shifts" => "shifts#create"
+  get "/get_username" => "shifts#get_username"
 end
