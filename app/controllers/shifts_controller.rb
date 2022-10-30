@@ -13,7 +13,8 @@ class ShiftsController < ApplicationController
       start = params[:start],
       finish = params[:finish],
       break_length = params[:break_length],
-      organization_id = organization.id
+      organization_id = organization.id,
+      employee_name = current_user.name
     )
     shift.save
     render json: shift.as_json

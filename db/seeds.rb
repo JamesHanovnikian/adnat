@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# shifts = Shift.all
+# shifts.each do |shift|
+#   user = User.find_by(id: shift.user_id)
+#   shift.employee_name = user.name
+#   shift.save
+# end
