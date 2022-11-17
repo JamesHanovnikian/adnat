@@ -1,9 +1,9 @@
 class ShiftsController < ApplicationController
   def index
-    logged_in = current_user
-    organization_id = current_user.organization_id
-    shifts = Shift.where(organization_id: organization_id)
-    render json: shifts.as_json
+    # logged_in = current_user
+    # organization_id = current_user.organization_id
+    shifts = Shift.all
+    render json: shifts
   end
 
   def create
@@ -21,9 +21,6 @@ class ShiftsController < ApplicationController
   end
 
   def get_username
-    puts "********************"
-    puts current_user
-    puts "********************"
     username = User.find_by(id: current_user.id)
     render json: username.as_json
   end

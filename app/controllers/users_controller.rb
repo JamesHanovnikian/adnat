@@ -23,6 +23,9 @@ class UsersController < ApplicationController
 
   def join_organization
     new_organization_id = params[:organization_id]
+    p "*************************"
+    p current_user
+    p "*************************"
     the_current_user = current_user
     the_current_user.organization_id = new_organization_id
     the_current_user.save
